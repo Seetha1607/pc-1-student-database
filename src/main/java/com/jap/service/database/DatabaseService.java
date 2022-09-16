@@ -8,6 +8,8 @@
 package com.jap.service.database;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DatabaseService {
 
@@ -24,10 +26,22 @@ public class DatabaseService {
     /**
      * This function returns false.
      */
-    public boolean connect() {
-        return false;
+    public boolean connect() throws SQLException {
+        // 1. load the jdbc driver into memory
+        //Class.forName("com.mysql.cj.jdbc.Driver");
+        // 2. create a connection object using the DriverManager class
+        databaseConnection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        return databaseConnection != null;
     }
 
+    /**
+     * This function prints the connection status of the device.
+     */
     public void printConnectionStatus() {
+        if (databaseConnection != null) {
+            System.out.println("\u001B[32m Database is connected. \u001B[0m");
+        } else {
+            System.err.println("!!Database is NOT connected!!");
+        }
     }
 }
