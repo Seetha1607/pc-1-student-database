@@ -20,4 +20,11 @@ public class DatabaseService {
 
     // A private field to store the references of the connection object
     private Connection databaseConnection;
+
+    /**
+     * This function returns false.
+     */
+    public boolean connect() {
+        return false;
+    }
 }
