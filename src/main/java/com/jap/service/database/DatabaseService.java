@@ -18,7 +18,7 @@ public class DatabaseService {
     // A constant variable.
     private static final String USERNAME = "root";
     // A constant variable.
-    private static final String PASSWORD = "admin";
+    private static final String PASSWORD = "Seetha@007";
 
     // A private field to store the references of the connection object
     private Connection databaseConnection;
