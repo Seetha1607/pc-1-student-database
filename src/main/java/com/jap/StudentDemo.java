@@ -1,12 +1,14 @@
 package com.jap;
 
+import com.jap.repository.StudentRepository;
 import com.jap.service.database.DatabaseService;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class StudentDemo {
 
-    public static void main(String[] args) throws RuntimeException {
+    public static void main(String[] args) throws RuntimeException, SQLException {
         DatabaseService databaseService = new DatabaseService();
         try {
             databaseService.connect();
@@ -14,16 +16,9 @@ public class StudentDemo {
             throw new RuntimeException(e);
         }
         databaseService.printConnectionStatus();
-    }
 
-    public void getAllStudentDetails() {
-        //Load the Drivers
-        // Get the connection from database
-
-        //Create statement object
-
-        //execute the query
-
-        //display the ResultSet Data
+        Connection databaseConnection = databaseService.getDatabaseConnection();
+        StudentRepository studentRepository = new StudentRepository();
+        studentRepository.getAllStudentDetails(databaseConnection).forEach(System.out::println);
     }
 }
