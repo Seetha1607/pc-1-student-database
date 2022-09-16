@@ -1,10 +1,19 @@
 package com.jap;
 
+import com.jap.service.database.DatabaseService;
+
+import java.sql.SQLException;
+
 public class StudentDemo {
 
-    public static void main(String[] args) {
-        StudentDemo studentDemo = new StudentDemo();
-        studentDemo.getAllStudentDetails();
+    public static void main(String[] args) throws RuntimeException {
+        DatabaseService databaseService = new DatabaseService();
+        try {
+            databaseService.connect();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        databaseService.printConnectionStatus();
     }
 
     public void getAllStudentDetails() {
