@@ -23,6 +23,10 @@ public class DatabaseService {
     // A private field to store the references of the connection object
     private Connection databaseConnection;
 
+    public DatabaseService() {
+        this.databaseConnection = null;
+    }
+
     /**
      * This function returns false.
      */
